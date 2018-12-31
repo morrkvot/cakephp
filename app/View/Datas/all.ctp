@@ -1,4 +1,6 @@
 <h1>Blog posts</h1>
+<?php echo $this->element('comment') ?>
+<?php echo $this->fetch('comment'); ?>
 <table>
     <tr>
         <th>Username</th>

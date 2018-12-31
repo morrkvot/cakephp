@@ -1,4 +1,5 @@
-<?php $this->start('all-comments'); ?>
+
+<?php $this->start('all'); ?>
 <h1>Blog posts</h1>
 <table>
     <tr>

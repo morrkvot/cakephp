@@ -1,6 +1,6 @@
 <h1>Comment</h1>
 <?php 
-$this->start('cet');
+$this->start('comment');
 
 print(
   $this->Form->create('Data') .

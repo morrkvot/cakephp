@@ -15,6 +15,15 @@ class DatasController extends AppController {
 
   public function all() {
         $this->set('datas', $this->Data->find('all'));
+
+    if ($this->request->is('post')) {
+            $this->Data->create();
+            if ($this->Data->save($this->request->data)) {
+                return $this->redirect(array('action' => 'all'));
+            }
+            $this->Flash->error(__('Unable to add your post.'));
+        }
+
   }
 
   //Fix
@@ -25,8 +34,16 @@ class DatasController extends AppController {
                 return $this->redirect(array('action' => 'all'));
             }
             $this->Flash->error(__('Unable to add your post.'));
-        }
+        } 
+    }
 
-        
+	public function find($name){
+    	if ($this->request->is('Username')) {
+            $this->Data->create();
+            if ($this->Data->save($this->request->data)) {
+                return $this->redirect(array('action' => 'all'));
+            }
+            $this->Flash->error(__('Unable to add your post.'));
+        } 
     }
 }

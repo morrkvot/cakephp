@@ -28,14 +28,14 @@ class UsersController extends AppController {
       //ログイン
       //$this->request->dataの値を使用してログインする規約になっている
       $this->Auth->login();
-      $this->redirect('http://localhost/cakephp-2/datas/');
+      $this->redirect('http://localhost/cakephp-2/datas/all');
     }
   }
 
   public function login(){
     if($this->request->is('post')) {
       if($this->Auth->login())
-        return $this->redirect('http://localhost/cakephp-2/datas/');
+        return $this->redirect('http://localhost/cakephp-2/datas/all');
       else
         $this->Session->setFlash('ログイン失敗');
     }
@@ -45,4 +45,34 @@ class UsersController extends AppController {
     $this->Auth->logout();
     $this->redirect('login');
   }
+
+    // public function search(){
+    //     $this->User->recursive = 0;
+    //     if ($this->user['users']['username']) { 
+    //           $this->set('users',  
+    //                 $this->paginate('users', array('users.username LIKE' => '%')));
+    //     }
+    //     else { 
+    //           $this->set('users', $this->paginate()); 
+    //     }
+  // }
+  public function search(){
+ //リクエストがPOSTの場合
+ if($this->request->is('username')){
+ //Formの値を取得
+ //$username=$this->data['Search']['username'];
+ $username=$this->request->data['Search']['username'];
+ //POSTされたデータを曖昧検索
+ $data=$this->Collection->find('username',array(
+ 'conditions'=>array('username like'=>'%'.$username.'%')));
+ $this->set('Collections',$data);
+ }else{ //POST以外の場合
+ //Collectionモデルから全てのデータを検索
+ $data=$this->Collection->find('all');
+ //データの連想配列をセット
+ $this->set('Collections',$data);
+ }
+ }
+
+
 }

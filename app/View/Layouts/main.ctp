@@ -9,9 +9,7 @@
   <div id="container">
     <div id="header">
       <div id="header_menu">
-        <?php echo $this->Html->link('Home', '/datas/index'); ?>
-        <?php echo $this->Html->link('Add comment', '/datas/comment'); ?>
-        <?php echo $this->Html->link('Read comments', '/datas/all/'); ?>
+        <?php echo $this->Html->link('Home', 'http://localhost/cakephp-2/datas/all/'); ?>
         
         <?php
           if(isset($user)):
