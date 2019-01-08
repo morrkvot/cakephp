@@ -12,3 +12,14 @@
 #header_menu{
   float: right;
 }
+
+#header_menu a{
+  margin: 5px 10px;
+}
+
+#DataAllForm {
+    margin-bottom: 20px;
+    border: solid 1px gray;
+    padding: 10px 10px;
+    border-radius: 4px;
+}

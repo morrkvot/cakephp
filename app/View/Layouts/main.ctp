@@ -13,8 +13,9 @@
         
         <?php
           if(isset($user)):
-            echo $this->Html->link('友達を検索する', '#');
+            echo $this->Html->link('友達を検索する', '/users/search');
             echo $this->Html->link('ログアウト', '/users/logout');
+            echo "You are logged in!";
           else:
             echo $this->Html->link('ログイン', '/users/login');
             echo $this->Html->link('新規登録', '/users/register');

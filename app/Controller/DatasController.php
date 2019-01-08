@@ -12,7 +12,7 @@ class DatasController extends AppController {
     $this->set('datas', $datas);
     $this->set('name', $name);
   }
-
+  
   public function all() {
         $this->set('datas', $this->Data->find('all'));
 
@@ -23,6 +23,16 @@ class DatasController extends AppController {
             }
             $this->Flash->error(__('Unable to add your post.'));
         }
+
+  //PAGINATION - REMOVE TO POST ALL
+  $this->paginate=array(
+  'fields' => array('Data.Name', 'Data.Comment','Data.Email', 'Data.ID', 'Data.Time'),
+  'limit' => 5,
+  'order' => array(
+      'Data.ID' => 'desc'
+  )
+      );
+  $this->set('datas',$this->paginate());
 
   }
 
@@ -43,7 +53,7 @@ class DatasController extends AppController {
             if ($this->Data->save($this->request->data)) {
                 return $this->redirect(array('action' => 'all'));
             }
-            $this->Flash->error(__('Unable to add your post.'));
+            $this->Flash->error(__('Unable to find user.'));
         } 
     }
 }

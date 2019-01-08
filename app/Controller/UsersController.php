@@ -46,33 +46,25 @@ class UsersController extends AppController {
     $this->redirect('login');
   }
 
-    // public function search(){
-    //     $this->User->recursive = 0;
-    //     if ($this->user['users']['username']) { 
-    //           $this->set('users',  
-    //                 $this->paginate('users', array('users.username LIKE' => '%')));
-    //     }
-    //     else { 
-    //           $this->set('users', $this->paginate()); 
-    //     }
-  // }
+
   public function search(){
+  }
+  public function test(){
  //リクエストがPOSTの場合
- if($this->request->is('username')){
+ if($this->request->is('post')){
  //Formの値を取得
  //$username=$this->data['Search']['username'];
  $username=$this->request->data['Search']['username'];
  //POSTされたデータを曖昧検索
- $data=$this->Collection->find('username',array(
+ $data=$this->User->find('all',array(
  'conditions'=>array('username like'=>'%'.$username.'%')));
- $this->set('Collections',$data);
+ $this->set('Users',$data);
  }else{ //POST以外の場合
  //Collectionモデルから全てのデータを検索
- $data=$this->Collection->find('all');
+ $data=$this->User->find('all');
  //データの連想配列をセット
- $this->set('Collections',$data);
+ $this->set('Users',$data);
  }
  }
-
 
 }

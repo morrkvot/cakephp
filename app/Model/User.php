@@ -2,6 +2,8 @@
 App::uses('AppModel', 'Model');
 
 class User extends AppModel {
+    var $useTable = 'users';
+
   //入力チェック機能
   public $validate = array(
     'username' => array(
